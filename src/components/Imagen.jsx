@@ -5,7 +5,7 @@ function Imagen() {
   return (
     <>
         <img src='img.jpg'/>
-        <p>Tipo de lugar</p>
+        <p>Lugar</p>
     </>
   )
 }
