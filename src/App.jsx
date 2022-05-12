@@ -6,19 +6,28 @@ import Detalle from './components/general/Detalle';
 import Action from './components/Actions/Action';
 
 
+const tarjetas = [{}]
+var primeraPagina = true;
 
 function App() {
+
+  if(primeraPagina){
   return (
       <>
     <Tarjeta className="tarjeta"/>
-
-    <br/><br/><br/><br/>
-   <div>
-     <Detalle/>
-   </div>
     
     </>
-  )
+  )}
+  else{
+    return(
+      <>
+      
+       <Detalle/>
+ 
+      
+      </>
+    )
+  }
 }
 
 export default App
