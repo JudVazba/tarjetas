@@ -15,19 +15,23 @@ import { TextField, IconButton, Fab } from '@mui/material'
 import { palette } from '@mui/system';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './styles/Tarjeta.css';
+ 
 
 
-export default function ImgMediaCard() {
+export default function ImgMediaCard(props) {
   return (
       
       <div className='tarj'>
-     
+     {
+       props.items.map(item => 
+    
     <Card sx={{ maxWidth: 345 }} className="card-body">
     <div className='portada'>
     <div className='imgs'>
      <CardMedia
+     className='card-media'
      component="img"
-      image='https://i.ytimg.com/vi/kkLk2XWMBf8/hqdefault.jpg?sqp=-oaymwEYCNIBEHZIVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLB4GZTFu1Ju2EPPPXnhMZtFVvYBaw'
+      image={item.imagen}
       />  
       <hr></hr>
      </div>
@@ -40,7 +44,7 @@ export default function ImgMediaCard() {
       </CardActions>
       </div>
      
-     <p className='lugar'>lugar</p>
+     <p className='lugar'>{item.lugar}</p>
 
       </div>
     <div className='detalles'>
@@ -53,7 +57,7 @@ export default function ImgMediaCard() {
         
         <div className='telefono'>
         <PhoneRoundedIcon color="primary"/>
-        <p className='tlfn'> 600000000</p>
+        <p className='tlfn'> {item.num}</p>
         <div className='estrellas'>
         <Estrellas />
         </div>
@@ -64,7 +68,7 @@ export default function ImgMediaCard() {
       <div className='col'>
               <div className='location'>
         <RoomRoundedIcon color="primary"/>
-        <p className='loc'>Nombre del lugar</p>       
+        <p className='loc'>{item.direccion}</p>       
        
         </div>
         </div>
@@ -79,6 +83,7 @@ export default function ImgMediaCard() {
       </div> 
     
     </Card>
+     )}
     </div>
     
   
