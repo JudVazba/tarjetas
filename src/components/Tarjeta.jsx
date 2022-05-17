@@ -15,15 +15,22 @@ import { TextField, IconButton, Fab } from '@mui/material'
 import { palette } from '@mui/system';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './styles/Tarjeta.css';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
  
 
 
 export default function ImgMediaCard(props) {
   return (
-      
-      <div className='tarj'>
-     {
+      <div>
+          <Box sx={{ display: 'flex' }}>
+      <CircularProgress />
+    </Box>
+           {
        props.items.map(item => 
+      <div className='tarj'>
+
     
     <Card sx={{ maxWidth: 345 }} className="card-body">
     <div className='portada'>
@@ -83,9 +90,10 @@ export default function ImgMediaCard(props) {
       </div> 
     
     </Card>
-     )}
+     
     </div>
-    
+    )}
+    </div>
   
   );
 }

@@ -3,17 +3,20 @@ import Action from '../../Actions/Action';
 import Descripcion from '../Detalles/Descripcion';
 import '../../styles/Detalle.css';
 import Datos from '../Detalles/Datos';
+import { Grid } from '@mui/material';
 
 function Detalle() {
     return (
         <>
+        <Grid container>
+        <Grid item sx={12}>
            <Descripcion/>
-                <br/><br/> <br/><br/> <br/><br/>
-                <Datos/>
-                <br/><br/> <br/><br/> <br/><br/>
+           </Grid>
+       
+               <Grid item sx={12}>
                 <Action/>
-           
-
+           </Grid>
+</Grid>
         </>
     )
 }

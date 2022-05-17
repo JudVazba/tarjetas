@@ -13,24 +13,37 @@ import Estrellas from '../Estrellas';
 import { palette } from '@mui/system';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import '../styles/Actions.css';
+import ActionType from '../ActionType';
 
 
 export default function ImgMediaCard() {
   return (
+    <>
+    <div className='accion'>
     <Card sx={{ maxWidth: 345 }}>
+    <div className='tipoAccion'>
+      <ActionType/>
+      </div>
      <CardMedia
      component="img"
       image="img.jpg"
       />
+      
       <CardContent>     
         <Typography variant="body2" color="primary">
-          Descripción
+          Título
         </Typography>
         <hr></hr>
+        <div className='calendario'>
         <p><CalendarMonthIcon color="warning"/> Desde fecha</p>
         <p>Descripción</p>
+        </div>
       </CardContent>
     
     </Card>
+    
+    </div>
+    </>
   );
 }

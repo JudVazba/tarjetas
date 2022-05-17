@@ -4,10 +4,13 @@ import Button from '@mui/material/Button';
 import Tarjeta from './components/Tarjeta';
 import Detalle from './components/general/Detalles/Detalle';
 import Action from './components/Actions/Action';
+import Detalle_Accion from './components/Actions/Detalle_Accion';
+
 
 
 
 var primeraPagina = false;
+var form = true;
 
 class App extends React.Component {
 
@@ -30,7 +33,16 @@ class App extends React.Component {
     
     </>
   )}
-  else{
+  else if(form){
+    return(
+      <>
+      
+       <Detalle_Accion/>
+ 
+      
+      </>
+    )
+  }else{
     return(
       <>
       
