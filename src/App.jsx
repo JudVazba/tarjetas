@@ -5,12 +5,10 @@ import Tarjeta from './components/Tarjeta';
 import Detalle from './components/general/Detalles/Detalle';
 import Action from './components/Actions/Action';
 import Detalle_Accion from './components/Actions/Detalle_Accion';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
 
-
-
-var primeraPagina = false;
-var form = true;
 
 class App extends React.Component {
 
@@ -26,32 +24,28 @@ class App extends React.Component {
     };
   }
   render(){
-  if(primeraPagina){
+ 
   return (
       <>
-    <Tarjeta items={this.state.lugares} />
+      <Router>
+      <div>
+      <Switch>
+      <Route  path='/' exact>
+      <Tarjeta items={this.state.lugares} />
+      </Route>
+    <Route   path='/action' exact>
+    <Detalle_Accion/>
+    </Route>    
+    <Route   path='/detalle' exact>
+    <Detalle/>
+    </Route>
+   
+    </Switch>
+    </div>
+    </Router>
     
     </>
-  )}
-  else if(form){
-    return(
-      <>
-      
-       <Detalle_Accion/>
- 
-      
-      </>
-    )
-  }else{
-    return(
-      <>
-      
-       <Detalle/>
- 
-      
-      </>
-    )
-  }
+  )
 }
 }
 

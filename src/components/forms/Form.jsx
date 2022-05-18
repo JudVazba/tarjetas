@@ -45,7 +45,7 @@ function Form() {
           rows={4}
         />
         <Stack direction="row" >
-      <Button variant="contained" endIcon={<SendIcon />}>
+      <Button variant="contained" endIcon={<SendIcon />} className="boton">
         Enviar
       </Button>
       </Stack>
