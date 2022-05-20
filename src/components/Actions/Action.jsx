@@ -15,6 +15,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import '../styles/Actions.css';
 import ActionType from '../ActionType';
+import '../styles/styles.css';
 
 
 export default function ImgMediaCard() {

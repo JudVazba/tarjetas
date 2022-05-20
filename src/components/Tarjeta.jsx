@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -10,90 +9,66 @@ import { AccessAlarm, FormatOverline, MailRounded, ThreeDRotation } from '@mui/i
 import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
 import RoomRoundedIcon from '@mui/icons-material/RoomRounded';
 import Estrellas from './Estrellas';
-import Imagen from  './Imagen';
-import { TextField, IconButton, Fab } from '@mui/material'
-import { palette } from '@mui/system';
+import Imagen from './Imagen';
+import { TextField, IconButton, Fab, Grid } from '@mui/material'
+import { Box, palette } from '@mui/system';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import './styles/Tarjeta.css';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-
- 
+import './styles/styles.css';
 
 
 export default function ImgMediaCard(props) {
   return (
-      <div>
-          <Box sx={{ display: 'flex' }}>
-      <CircularProgress />
-    </Box>
-           {
-       props.items.map(item => 
-      <div className='tarj'>
+    <>
+      <Grid container spacing={3} marginLeft="auto" marging right="auto">
+        {
+          props.items.map(item =>
+            <Grid item xs={6} sm={4}>
+              <Card className="card-body">
+                <IconButton aria-label='add to favorites' position="absolute">
+                  <FavoriteIcon />
+                </IconButton>
 
-    
-    <Card sx={{ maxWidth: 345 }} className="card-body">
-    <div className='portada'>
-    <div className='imgs'>
-     <CardMedia
-     className='card-media'
-     component="img"
-      image={item.imagen}
-      />  
-      <hr></hr>
-     </div>
-     <div className='megusta'>  
-    <CardActions disableSpacing>
-      
-      <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-      </CardActions>
-      </div>
-     
-     <p className='lugar'>{item.lugar}</p>
+                <Typography gutterBottom variant="h6"
+                  component="div"
+                  color="white"
+                  bgcolor="primary.main"
+                  position="absolute">
+                  {item.lugar}
+                </Typography>
 
-      </div>
-    <div className='detalles'>
-    <div className='row'>
-    
-      <CardContent>    
-      
-      
-        <div className='col'>
-        
-        <div className='telefono'>
-        <PhoneRoundedIcon color="primary"/>
-        <p className='tlfn'> {item.num}</p>
-        <div className='estrellas'>
-        <Estrellas />
-        </div>
-        </div>
-        </div>
-      
-      <div className='row'>
-      <div className='col'>
-              <div className='location'>
-        <RoomRoundedIcon color="primary"/>
-        <p className='loc'>{item.direccion}</p>       
-       
-        </div>
-        </div>
-        
-       
-      
-        </div>
-       
-        
-      </CardContent>
-      </div>
-      </div> 
-    
-    </Card>
-     
-    </div>
-    )}
-    </div>
-  
+                <CardMedia
+                  component="img"
+                  image={item.imagen}
+                  alt="imagen del lugar"
+                  title='nombre'
+
+                />
+
+
+
+                <CardContent>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} md={5}>
+                      <PhoneRoundedIcon color="primary" />
+                      {item.num}
+                    </Grid>
+                    <Grid item xs={12} md={5} marginRight="15%">
+                      <Estrellas />
+                    </Grid>
+                    <Grid item xs={12} >
+                      <RoomRoundedIcon color="primary" />
+                      {item.direccion}
+                    </Grid>
+
+                  </Grid>
+
+                </CardContent>
+              </Card>
+            </Grid>
+          )}
+      </Grid>
+    </>
   );
+
 }
+
