@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Datos from '../Detalles/Datos';
 import { Paper } from '@mui/material';
 import { Box, Grid, MenuItem } from '@mui/material';
 import { Typography } from '@mui/material';
 import '../../styles/styles.css';
+import { useParams } from 'react-router-dom';
+
 
 
 import '../../styles/Detalle.css';
 
-function Descripcion(props) {
+ export default function Descripcion() {
+   let params = useParams();
+   useEffect(() =>{
+     fetchData();
+     console.log(params);
+   }, []);
+
+   const fetchData =() =>{
+     fetch(`https://soluciones.avansis.es:8060/api/Places/Details/${params.idPlace}`)
+     .then((data) =>data.json())
+     .then ((data)=>{
+       setData(data);
+     });
+   };
+  
+  const [data, setData] = useState([])
+   
   return (
     <>
       <Grid container spacing={2} justifyContent="center">
-
+      
         <Grid item xs={6} >
-
+      
 
           <img src='https://st.depositphotos.com/1134101/3098/i/950/depositphotos_30987137-stock-photo-puerto-banus-at-dusk-marina.jpg' />
 
@@ -22,7 +40,7 @@ function Descripcion(props) {
         </Grid>
         <Grid item xs={12} sm={12} md={6} >
 
-          <h1 >TÍTULO ACCIÓN</h1>
+          <h1 >TÍTULO lugar</h1>
 
           <p>Lorem ipsum dolor sit amet,
             consectetur adipiscing elit.
@@ -58,5 +76,3 @@ function Descripcion(props) {
     </>
   )
 }
-
-export default Descripcion

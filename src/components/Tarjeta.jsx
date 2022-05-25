@@ -14,16 +14,24 @@ import { TextField, IconButton, Fab, Grid } from '@mui/material'
 import { Box, palette } from '@mui/system';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './styles/styles.css';
+import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
 export default function ImgMediaCard(props) {
+
+
+
+
   return (
     <>
       <Grid container spacing={3} marginLeft="auto" marging right="auto">
         {
           props.items.map(item =>
             <Grid item xs={6} sm={4}>
+            
               <Card className="card-body">
+
                 <IconButton aria-label='add to favorites' position="absolute">
                   <FavoriteIcon />
                 </IconButton>
@@ -35,14 +43,16 @@ export default function ImgMediaCard(props) {
                   position="absolute">
                   {item.lugar}
                 </Typography>
-
+                <Link to= "/detalle/:id">
                 <CardMedia
+                 onClick={console.log(item.id)}
                   component="img"
                   image={item.imagen}
                   alt="imagen del lugar"
                   title='nombre'
 
                 />
+                </Link>
 
 
 
