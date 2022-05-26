@@ -33,7 +33,7 @@ import '../../styles/Detalle.css';
     
       <Grid container spacing={2} justifyContent="center">
       
-        <Grid item xs={6} >
+        <Grid item xs={4} justifyContent="center" >
       
 
           <img src='https://st.depositphotos.com/1134101/3098/i/950/depositphotos_30987137-stock-photo-puerto-banus-at-dusk-marina.jpg' />
@@ -66,7 +66,7 @@ import '../../styles/Detalle.css';
             id est.</p>
           <Grid container
             border="1px solid lightgrey">
-            <Grid item xs={12} marginTop={1} marginBottom={1}>
+            <Grid item xs={12}  marginTop={1} marginBottom={1}>
              <Datos/>
           </Grid>
         </Grid>

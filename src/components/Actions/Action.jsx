@@ -16,32 +16,40 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import '../styles/Actions.css';
 import ActionType from './ActionType';
 import '../styles/styles.css';
+import { Link } from 'react-router-dom';
+import { Grid } from '@mui/material';
 
 
 
-export default function ImgMediaCard() {
+export default function ImgMediaCard(props) {
   return (
     <>
-   
-    <Card sx={{ maxWidth: 345 }}  marginTop={3} >
-   
+     <Grid container spacing={2} marginTop={3} marginLeft={3} marging right="auto">
+    {
+     props.items.map( item =>
+      <Grid item xs={6} sm={4}>
+    <Card  >
+  
       <ActionType/>
-     
+     <Link to="/action">
      <CardMedia
      component="img"
-      image="../img.jpg"
-      />      
+      image={item.actionImg}
+      />     
+      </Link> 
       <CardContent>     
         <Typography variant="body2" color="primary" >
-          Título de la acción
+          {item.actiontitle}
         </Typography>
         <hr></hr>        
-        <p><CalendarMonthIcon color="warning"/> Desde fecha</p>
-        <p>Descripción del lugar traída por datos de la bbdd</p>       
+        <p><CalendarMonthIcon color="warning"/>{item.actionDate}</p>
+        <p>{item.actionDetails}</p>       
       </CardContent>
-    
+ 
     </Card>
-    
+   </Grid> 
+    )}
+    </Grid>
     
     </>
   );

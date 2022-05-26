@@ -23,7 +23,7 @@ export default function ImgMediaCard(props) {
 
   return (
     <>
-      <Grid container spacing={3} marginLeft="auto" marging right="auto">
+      <Grid container spacing={3} marginLeft="auto" marging right="auto" display="inline-grid">
         {
           
           props.items.map(item =>

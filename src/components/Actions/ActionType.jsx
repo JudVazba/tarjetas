@@ -9,7 +9,7 @@ import '../styles/styles.css';
 
 
 
-var actionType = 1
+var actionType = 2
 
 function ActionType() {
 
