@@ -14,37 +14,35 @@ import { palette } from '@mui/system';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import '../styles/Actions.css';
-import ActionType from '../ActionType';
+import ActionType from './ActionType';
 import '../styles/styles.css';
+
 
 
 export default function ImgMediaCard() {
   return (
     <>
-    <div className='accion'>
-    <Card sx={{ maxWidth: 345 }}>
-    <div className='tipoAccion'>
+   
+    <Card sx={{ maxWidth: 345 }}  marginTop={3} >
+   
       <ActionType/>
-      </div>
+     
      <CardMedia
      component="img"
-      image="img.jpg"
-      />
-      
+      image="../img.jpg"
+      />      
       <CardContent>     
-        <Typography variant="body2" color="primary">
-          Título
+        <Typography variant="body2" color="primary" >
+          Título de la acción
         </Typography>
-        <hr></hr>
-        <div className='calendario'>
+        <hr></hr>        
         <p><CalendarMonthIcon color="warning"/> Desde fecha</p>
-        <p>Descripción</p>
-        </div>
+        <p>Descripción del lugar traída por datos de la bbdd</p>       
       </CardContent>
     
     </Card>
     
-    </div>
+    
     </>
   );
 }
