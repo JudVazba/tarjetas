@@ -21,7 +21,8 @@ import '../../styles/Detalle.css';
      fetch(`https://soluciones.avansis.es:8060/api/Places/Details/${params.idPlace}`)
      .then((data) =>data.json())
      .then ((data)=>{
-       setData(data);
+      console.log(data);
+      setData(data);
      });
    };
   
@@ -29,6 +30,7 @@ import '../../styles/Detalle.css';
    
   return (
     <>
+    
       <Grid container spacing={2} justifyContent="center">
       
         <Grid item xs={6} >
