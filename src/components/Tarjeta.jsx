@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -10,90 +9,81 @@ import { AccessAlarm, FormatOverline, MailRounded, ThreeDRotation } from '@mui/i
 import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded';
 import RoomRoundedIcon from '@mui/icons-material/RoomRounded';
 import Estrellas from './Estrellas';
-import Imagen from  './Imagen';
-import { TextField, IconButton, Fab } from '@mui/material'
-import { palette } from '@mui/system';
+import { IconButton, Fab, Grid } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import './styles/Tarjeta.css';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
-
- 
+import './styles/styles.css';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 
 export default function ImgMediaCard(props) {
+
+  const [actualId, setActualId ] = useState([]);
+
+
   return (
-      <div>
-          <Box sx={{ display: 'flex' }}>
-      <CircularProgress />
-    </Box>
-           {
-       props.items.map(item => 
-      <div className='tarj'>
+    <>
+      <Grid container spacing={3} marginLeft="auto" marginRight="auto">
+        {
+          props.items.map(item =>
+            <Grid item xs={6} sm={4}>
+            
+              <Card className="card-body" sx={{ width:270 }} >
 
-    
-    <Card sx={{ maxWidth: 345 }} className="card-body">
-    <div className='portada'>
-    <div className='imgs'>
-     <CardMedia
-     className='card-media'
-     component="img"
-      image={item.imagen}
-      />  
-      <hr></hr>
-     </div>
-     <div className='megusta'>  
-    <CardActions disableSpacing>
-      
-      <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-      </CardActions>
-      </div>
-     
-     <p className='lugar'>{item.lugar}</p>
 
-      </div>
-    <div className='detalles'>
-    <div className='row'>
-    
-      <CardContent>    
-      
-      
-        <div className='col'>
-        
-        <div className='telefono'>
-        <PhoneRoundedIcon color="primary"/>
-        <p className='tlfn'> {item.num}</p>
-        <div className='estrellas'>
-        <Estrellas />
-        </div>
-        </div>
-        </div>
-      
-      <div className='row'>
-      <div className='col'>
-              <div className='location'>
-        <RoomRoundedIcon color="primary"/>
-        <p className='loc'>{item.direccion}</p>       
-       
-        </div>
-        </div>
-        
-       
-      
-        </div>
-       
-        
-      </CardContent>
-      </div>
-      </div> 
-    
-    </Card>
-     
-    </div>
-    )}
-    </div>
-  
+                <Typography gutterBottom 
+                sx={{ fontSize: 16 }}
+                  color="white"
+                  bgcolor="darkblue"
+                  position="absolute"
+                  textAlign="center"
+                  justifyContent="center"
+                  style={{opacity: 0.6, marginTop: 175}}>
+                  {item.lugar}
+                </Typography>
+                <Link to= "/detalle/:id">
+                <CardMedia
+                sx={{ width: 300, height: 200}}
+                 onClick={console.log(item.id)}
+                  component="img"
+                  image={item.imagen}
+                  alt="imagen del lugar"
+                  title='nombre'
+                    />
+                
+                <IconButton
+                 aria-label='add to favorites'
+                  position="absolute" 
+                  style={{bottom:200, left: 230}}>
+                  <FavoriteIcon />
+                </IconButton>
+                </Link>
+
+              
+
+                <CardContent
+                sx={{ width: 300, height: 70, marginTop: -3}}>
+                  <Grid container spacing={1}>
+                    <Grid item xs={12} md={6}>
+                      <PhoneRoundedIcon color="primary" />
+                      {item.num}
+                    </Grid>
+                    <Grid item xs={12} md={5} >
+                      <Estrellas />
+                    </Grid>
+                    <Grid item xs={12} >
+                      <RoomRoundedIcon color="primary" />
+                      {item.direccion}
+                    </Grid>
+
+                  </Grid>
+
+                </CardContent>
+              </Card>
+            </Grid>
+          )}
+      </Grid>
+    </>
   );
 }
+
