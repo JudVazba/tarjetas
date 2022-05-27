@@ -26,9 +26,9 @@ export default function ImgMediaCard(props) {
       <Grid container spacing={3} marginLeft="auto" marginRight="auto">
         {
           props.items.map(item =>
-            <Grid item xs={6} sm={4}>
+            <Grid item xs={12} sm={6} lg={4}>
             
-              <Card className="card-body" sx={{ width:270 }} >
+              <Card className="card-body" sx={{ width:270 }} style={{marginLeft: 70, marginRight: 50}} >
 
 
                 <Typography gutterBottom 

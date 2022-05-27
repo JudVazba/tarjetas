@@ -4,7 +4,7 @@ import { Paper } from '@mui/material';
 import { Box, Grid, MenuItem } from '@mui/material';
 import { Typography } from '@mui/material';
 import '../../styles/styles.css';
-import { useParams } from 'react-router-dom';
+import Estrellas from "../../Estrellas";
 
 
 
@@ -18,17 +18,22 @@ import '../../styles/Detalle.css';
   return (
     <>
     
-      <Grid container spacing={2} justifyContent="center">
+      <Grid container spacing={2} justifyContent="center" marginLeft={20} marginTop={5}>
       
-        <Grid item xs={4} justifyContent="center" >
+      <Box
+        style={{marginLeft: 50, width: 1000}}
+        display="flex"
+
+        >
+        <Grid item xs={12} sm={6} >     
       
 
           <img src='https://st.depositphotos.com/1134101/3098/i/950/depositphotos_30987137-stock-photo-puerto-banus-at-dusk-marina.jpg' />
 
 
         </Grid>
-        <Grid item xs={12} sm={12} md={6} >
-
+        <Grid item xs={12} sm={6} style={{marginLeft: 20, marginTop: -30}}  >
+       
           <h1 >titulo</h1>
 
           <p>Lorem ipsum dolor sit amet,
@@ -40,25 +45,17 @@ import '../../styles/Detalle.css';
             vel auctor ipsum. Praesent ac sodales enim.
             Morbi faucibus tempor lorem, et ultrice
             s diam tempus id. In hendrerit metus neque
-            , et posuere lectus fringilla vitae.
-            Integer non lectus interdum ante pulvinar posuere.
-            Nunc vehicula dapibus arcu. Suspendisse vehicula,
-            est id auctor fringilla, metus risus fringilla lorem,
-            quis aliquet lacus nisl in odio. In turpis metus,
-            iaculis in justo sed, eleifend sollicitudin turpis.
-            Suspendisse cursus ante quis ornare finibus. Interdum
-            et malesuada fames ac ante ipsum primis in faucibus.
-            Maecenas efficitur, leo in condimentum dignissim,
-            ipsum neque posuere elit, eu pretium arcu massa
-            id est.</p>
-          <Grid container
+            , et posuere lectus fringilla vitae.</p>
+          <Grid container spacing={1}
             border="1px solid lightgrey" >
-            <Grid item xs={4}  marginTop={1} marginBottom={1}>
+            <Grid item xs={12}  marginTop={1} marginBottom={1}>
              <Datos/>
           </Grid>
         </Grid>
+        
 
       </Grid>
+      </Box>
      
       </Grid>
    

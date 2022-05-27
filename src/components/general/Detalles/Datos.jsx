@@ -8,17 +8,15 @@ import '../../styles/styles.css';
 function Datos() {
   return (
     <>
-      <Grid container>
-       
-            <Grid item xs={6}>
-              <p>TLFN</p>
+      <Grid container >       
+            <Grid item xs={6}  >
+              <p>Teléfono: 600600600</p>
             </Grid>
-            <Grid item xs={6} >
-           
-            <Estrellas />
+            <Grid item xs={6} marginTop="3%" >           
+            <Estrellas/>
           </Grid>
             <Grid item xs={6}>
-              <p>Dirección</p>
+              <p>Dirección: calle demo número 0</p>
             </Grid>
        
          
