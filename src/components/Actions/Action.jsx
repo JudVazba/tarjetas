@@ -28,7 +28,7 @@ export default function ImgMediaCard(props) {
     {
      props.items.map( item =>
       <Grid item xs={6} sm={4}>
-    <Card  >
+    <Card  sx={{ width:270 }} style={{marginLeft: 20, marginRight: 50}}>
   
       <ActionType/>
      <Link to="/action">

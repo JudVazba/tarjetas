@@ -27,7 +27,7 @@ class Detalle extends React.Component {
                         <Descripcion />
                     </Grid>
 
-                    <Grid item sx={12} sm={8} md={4}>
+                    <Grid item sx={12} sm={12} md={12}>
                    
                         <Action items={this.state.acciones} />
                        
