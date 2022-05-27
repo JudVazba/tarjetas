@@ -23,20 +23,19 @@ export default function ImgMediaCard(props) {
 
   return (
     <>
-      <Grid container spacing={3} marginLeft="auto" marging right="auto" display="inline-grid">
+      <Grid container spacing={3} marginLeft="auto" marginRight="auto">
         {
-          
           props.items.map(item =>
-          
             <Grid item xs={6} sm={4}>
             
-              <Card className="card-body">
+              <Card className="card-body" sx={{ width:270  }} >
 
                 <IconButton aria-label='add to favorites' position="absolute">
                   <FavoriteIcon />
                 </IconButton>
 
-                <Typography gutterBottom variant="h6"
+                <Typography gutterBottom 
+                sx={{ fontSize: 16 }}
                   component="div"
                   color="white"
                   bgcolor="primary.main"
@@ -45,7 +44,8 @@ export default function ImgMediaCard(props) {
                 </Typography>
                 <Link to= "/detalle/:id">
                 <CardMedia
-                 onClick={console.log()}
+                sx={{ width: 300, height: 200}}
+                 onClick={console.log(item.id)}
                   component="img"
                   image={item.imagen}
                   alt="imagen del lugar"
@@ -57,12 +57,12 @@ export default function ImgMediaCard(props) {
 
 
                 <CardContent>
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} md={5}>
+                  <Grid container spacing={1}>
+                    <Grid item xs={12} md={6}>
                       <PhoneRoundedIcon color="primary" />
                       {item.num}
                     </Grid>
-                    <Grid item xs={12} md={5} marginRight="15%">
+                    <Grid item xs={12} md={5} >
                       <Estrellas />
                     </Grid>
                     <Grid item xs={12} >
@@ -79,6 +79,5 @@ export default function ImgMediaCard(props) {
       </Grid>
     </>
   );
-
 }
 

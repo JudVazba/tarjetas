@@ -13,20 +13,22 @@ export default function HoverRating() {
       sx={{
         width: 200,
         display: 'flex',
-        alignItems: 'center',
+        alignItems: 'flex-end',
+        
       }}
     >
       <Rating
         name="hover-feedback"
         value={value}
         precision={0.5}
+        alignItems={"flex-end"}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
         onChangeActive={(event, newHover) => {
           setHover(newHover);
         }}
-        emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+        emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" margin="auto" />}
       />
       {value !== null && (
         <Box sx={{ ml: 2 }}></Box>
