@@ -5,7 +5,7 @@ import StarIcon from '@mui/icons-material/Star';
 
 
 export default function HoverRating() {
-  const [value, setValue] = React.useState(2);
+  const [value, setValue] = React.useState(4);
   const [hover, setHover] = React.useState(-1);
 
   return (

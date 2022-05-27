@@ -14,14 +14,12 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import './styles/styles.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 
-export default function ImgMediaCard(props) {
-
-  const [actualId, setActualId ] = useState([]);
-
-
-  return (
+const Tarjeta = props => { 
+  console.log(props);
+   return (
     <>
       <Grid container spacing={3} marginLeft="auto" marginRight="auto">
         {
@@ -39,14 +37,14 @@ export default function ImgMediaCard(props) {
                   textAlign="center"
                   justifyContent="center"
                   style={{opacity: 0.6, marginTop: 175}}>
-                  {item.lugar}
+                  {item.placeName}
                 </Typography>
-                <Link to= "/detalle/:id">
+                <Link to={"/detalle/"+item.idPlace}>
                 <CardMedia
                 sx={{ width: 300, height: 200}}
                  onClick={console.log(item.id)}
                   component="img"
-                  image={item.imagen}
+                  src={"data:image/png;base64,"+item.placeImgFeatured}
                   alt="imagen del lugar"
                   title='nombre'
                     />
@@ -86,4 +84,6 @@ export default function ImgMediaCard(props) {
     </>
   );
 }
+
+export default Tarjeta
 

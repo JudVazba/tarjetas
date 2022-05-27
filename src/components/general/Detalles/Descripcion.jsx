@@ -5,21 +5,36 @@ import { Box, Grid, MenuItem } from '@mui/material';
 import { Typography } from '@mui/material';
 import '../../styles/styles.css';
 import Estrellas from "../../Estrellas";
-
-
-
+import { useParams } from 'react-router-dom';
 import '../../styles/Detalle.css';
+import { SecurityUpdateGoodSharp } from '@mui/icons-material';
 
- export default function Descripcion() {
 
-  
-  const [data, setData] = useState([])
-   
+const Descripcion = props => {
+
+  const params = useParams();
+  const url = `https://soluciones.avansis.es:8061/api/Places/Details/`+params.idPlace
+
+   const [details, setDetails] = useState({"Miobjeto": "Mi objeti con mis cosas;"});
+
+const fetchApi = async () =>{
+  const response = await fetch(url)
+  //console.log(response.status)
+  const responseJSON = await  response.json();
+  setDetails(responseJSON)
+  console.log(responseJSON)
+}
+
+useEffect(() =>{
+  fetchApi()
+}, [])
+
+
   return (
     <>
     
       <Grid container spacing={2} justifyContent="center" marginLeft={20} marginTop={5}>
-      
+      { JSON.stringify(details, null, 2) }
       <Box
         style={{marginLeft: 50, width: 1000}}
         display="flex"
@@ -46,6 +61,7 @@ import '../../styles/Detalle.css';
             Morbi faucibus tempor lorem, et ultrice
             s diam tempus id. In hendrerit metus neque
             , et posuere lectus fringilla vitae.</p>
+
           <Grid container spacing={1}
             border="1px solid lightgrey" >
             <Grid item xs={12}  marginTop={1} marginBottom={1}>
@@ -62,3 +78,5 @@ import '../../styles/Detalle.css';
     </>
   )
 }
+
+export default Descripcion;
