@@ -28,18 +28,17 @@ export default function ImgMediaCard(props) {
           props.items.map(item =>
             <Grid item xs={6} sm={4}>
             
-              <Card className="card-body" sx={{ width:270  }} >
+              <Card className="card-body" sx={{ width:270 }} >
 
-                <IconButton aria-label='add to favorites' position="absolute">
-                  <FavoriteIcon />
-                </IconButton>
 
                 <Typography gutterBottom 
                 sx={{ fontSize: 16 }}
-                  component="div"
                   color="white"
-                  bgcolor="primary.main"
-                  position="absolute">
+                  bgcolor="darkblue"
+                  position="absolute"
+                  textAlign="center"
+                  justifyContent="center"
+                  style={{opacity: 0.6, marginTop: 175}}>
                   {item.lugar}
                 </Typography>
                 <Link to= "/detalle/:id">
@@ -50,13 +49,20 @@ export default function ImgMediaCard(props) {
                   image={item.imagen}
                   alt="imagen del lugar"
                   title='nombre'
-
-                />
+                    />
+                
+                <IconButton
+                 aria-label='add to favorites'
+                  position="absolute" 
+                  style={{bottom:200, left: 230}}>
+                  <FavoriteIcon />
+                </IconButton>
                 </Link>
 
+              
 
-
-                <CardContent>
+                <CardContent
+                sx={{ width: 300, height: 70, marginTop: -3}}>
                   <Grid container spacing={1}>
                     <Grid item xs={12} md={6}>
                       <PhoneRoundedIcon color="primary" />

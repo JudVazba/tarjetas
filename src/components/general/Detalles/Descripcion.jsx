@@ -11,20 +11,7 @@ import { useParams } from 'react-router-dom';
 import '../../styles/Detalle.css';
 
  export default function Descripcion() {
-   let params = useParams();
-   useEffect(() =>{
-     fetchData();
-     console.log(params);
-   }, []);
 
-   const fetchData =() =>{
-     fetch(`https://soluciones.avansis.es:8060/api/Places/Details/${params.idPlace}`)
-     .then((data) =>data.json())
-     .then ((data)=>{
-      console.log(data);
-      setData(data);
-     });
-   };
   
   const [data, setData] = useState([])
    
@@ -42,7 +29,7 @@ import '../../styles/Detalle.css';
         </Grid>
         <Grid item xs={12} sm={12} md={6} >
 
-          <h1 >TÍTULO lugar</h1>
+          <h1 >titulo</h1>
 
           <p>Lorem ipsum dolor sit amet,
             consectetur adipiscing elit.
@@ -65,8 +52,8 @@ import '../../styles/Detalle.css';
             ipsum neque posuere elit, eu pretium arcu massa
             id est.</p>
           <Grid container
-            border="1px solid lightgrey">
-            <Grid item xs={12}  marginTop={1} marginBottom={1}>
+            border="1px solid lightgrey" >
+            <Grid item xs={4}  marginTop={1} marginBottom={1}>
              <Datos/>
           </Grid>
         </Grid>
