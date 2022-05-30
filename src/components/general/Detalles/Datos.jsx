@@ -5,18 +5,19 @@ import { Box, Grid, MenuItem } from '@mui/material';
 import '../../styles/styles.css';
 
 
-function Datos() {
+const Datos = props => { 
+  console.log(props);
   return (
     <>
       <Grid container >       
             <Grid item xs={6}  >
-              <p>Teléfono: 600600600</p>
+              <p>Teléfono: {props.items.placePhone}</p>
             </Grid>
             <Grid item xs={6} marginTop="3%" >           
             <Estrellas/>
           </Grid>
             <Grid item xs={6}>
-              <p>Dirección: calle demo número 0</p>
+              <p>Dirección: {props.items.placeAddress}</p>
             </Grid>
        
          

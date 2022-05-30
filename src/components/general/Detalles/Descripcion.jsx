@@ -52,21 +52,12 @@ useEffect(() =>{
        
           <h1 >{details.placeName}</h1>
 
-          <p>Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit.
-            Cras condimentum, neque vel hendrerit molestie
-            , lectus felis commodo arcu, nec mollis mauris
-            felis accumsan velit. Cras vestibulum dui a
-            ornare rhoncus. Quisque a bibendum lectus,
-            vel auctor ipsum. Praesent ac sodales enim.
-            Morbi faucibus tempor lorem, et ultrice
-            s diam tempus id. In hendrerit metus neque
-            , et posuere lectus fringilla vitae.</p>
+          <p>{}</p>
 
           <Grid container spacing={1}
             border="1px solid lightgrey" >
             <Grid item xs={12}  marginTop={1} marginBottom={1}>
-             <Datos/>
+             <Datos items={details}/>
           </Grid>
         </Grid>
         
