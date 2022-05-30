@@ -21,7 +21,7 @@ const fetchApi = async () =>{
   const response = await fetch(url)
   //console.log(response.status)
   const responseJSON = await  response.json();
-  setDetails(responseJSON)
+  setDetails(responseJSON.data)
   console.log(responseJSON)
 }
 
@@ -29,12 +29,13 @@ useEffect(() =>{
   fetchApi()
 }, [])
 
+//  { JSON.stringify(details, null, 2) }
 
   return (
     <>
     
       <Grid container spacing={2} justifyContent="center" marginLeft={20} marginTop={5}>
-      { JSON.stringify(details, null, 2) }
+    
       <Box
         style={{marginLeft: 50, width: 1000}}
         display="flex"
@@ -43,13 +44,13 @@ useEffect(() =>{
         <Grid item xs={12} sm={6} >     
       
 
-          <img src='https://st.depositphotos.com/1134101/3098/i/950/depositphotos_30987137-stock-photo-puerto-banus-at-dusk-marina.jpg' />
+          <img src={"data:image/png;base64,"+details.placeImgFeatured} />
 
 
         </Grid>
         <Grid item xs={12} sm={6} style={{marginLeft: 20, marginTop: -30}}  >
        
-          <h1 >titulo</h1>
+          <h1 >{details.placeName}</h1>
 
           <p>Lorem ipsum dolor sit amet,
             consectetur adipiscing elit.
