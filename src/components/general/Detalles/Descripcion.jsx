@@ -14,8 +14,10 @@ const Descripcion = props => {
 
   const params = useParams();
   const url = `https://soluciones.avansis.es:8061/api/Places/Details/`+params.idPlace
+ 
 
-   const [details, setDetails] = useState({"Miobjeto": "Mi objeti con mis cosas;"});
+   const [details, setDetails] = useState([]);
+
 
 const fetchApi = async () =>{
   const response = await fetch(url)
@@ -25,17 +27,21 @@ const fetchApi = async () =>{
   console.log(responseJSON)
 }
 
+
+
 useEffect(() =>{
   fetchApi()
 }, [])
 
-//  { JSON.stringify(details, null, 2) }
+
+
+//  { JSON.stringify(actions, null, 2) }
 
   return (
     <>
     
       <Grid container spacing={2} justifyContent="center" marginLeft={20} marginTop={5}>
-    
+      
       <Box
         style={{marginLeft: 50, width: 1000}}
         display="flex"
@@ -52,21 +58,12 @@ useEffect(() =>{
        
           <h1 >{details.placeName}</h1>
 
-          <p>Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit.
-            Cras condimentum, neque vel hendrerit molestie
-            , lectus felis commodo arcu, nec mollis mauris
-            felis accumsan velit. Cras vestibulum dui a
-            ornare rhoncus. Quisque a bibendum lectus,
-            vel auctor ipsum. Praesent ac sodales enim.
-            Morbi faucibus tempor lorem, et ultrice
-            s diam tempus id. In hendrerit metus neque
-            , et posuere lectus fringilla vitae.</p>
+          <p>{}</p>
 
           <Grid container spacing={1}
             border="1px solid lightgrey" >
             <Grid item xs={12}  marginTop={1} marginBottom={1}>
-             <Datos/>
+             <Datos items={details}/>
           </Grid>
         </Grid>
         

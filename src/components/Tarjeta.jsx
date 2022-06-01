@@ -64,14 +64,14 @@ const Tarjeta = props => {
                   <Grid container spacing={1}>
                     <Grid item xs={12} md={6}>
                       <PhoneRoundedIcon color="primary" />
-                      {item.num}
+                      {item.placePhone}
                     </Grid>
                     <Grid item xs={12} md={5} >
                       <Estrellas />
                     </Grid>
                     <Grid item xs={12} >
                       <RoomRoundedIcon color="primary" />
-                      {item.direccion}
+                      {item.placeAddress}
                     </Grid>
 
                   </Grid>

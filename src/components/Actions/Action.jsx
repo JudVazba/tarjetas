@@ -18,15 +18,62 @@ import ActionType from './ActionType';
 import '../styles/styles.css';
 import { Link } from 'react-router-dom';
 import { Grid } from '@mui/material';
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 
-export default function ImgMediaCard(props) {
+const Actions = props => {
+  
+
+    const params = useParams();
+
+  const urlActions = "https://soluciones.avansis.es:8061/api/Actions/List"
+  const url ="https://soluciones.avansis.es:8061/api/Actions/Details"+params.idAction
+  const [actions, setActions] = useState([]);
+  const actionsidPlace = params.idPlace;
+  console.log(actionsidPlace)
+  
+  const body = {
+  "pageSize": 10,
+  "pageNumber": 0,
+  "globalSearch": "",
+  "search": [],
+  "order": []
+}
+
+const fetchApiActions = () =>{
+  fetch(urlActions, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type':'application/json'
+    }
+  }).then(response => response.json())
+  .catch(error => console.log(error))
+  .then(response => setActions(response.data));
+}
+
+
+
+useEffect(() =>{
+
+  fetchApiActions()
+}, [])
+
+
+//  { JSON.stringify(actions, null, 2) }
+
+  
+  
+
   return (
     <>
-     <Grid container spacing={2} marginTop={3} marginLeft={3} marging right="auto">
     {
-     props.items.map( item =>
+      actions.map((actions) =>
+     <Grid container spacing={2} marginTop={3} marginLeft={3} marging right="auto">
+       
       <Grid item xs={6} sm={4}>
     <Card  sx={{ width:270 }} style={{marginLeft: 20, marginRight: 50}}>
   
@@ -34,23 +81,26 @@ export default function ImgMediaCard(props) {
      <Link to="/action">
      <CardMedia
      component="img"
-      image={item.actionImg}
+      image={"data:image/png;base64,"+actions.actionImgFeatured}
       />     
       </Link> 
       <CardContent>     
         <Typography variant="body2" color="primary" >
-          {item.actiontitle}
+          {actions.actionTitle}
         </Typography>
         <hr></hr>        
-        <p><CalendarMonthIcon color="warning"/>{item.actionDate}</p>
-        <p>{item.actionDetails}</p>       
+        <p><CalendarMonthIcon color="warning"/>{actions.actionDateTimeTo}</p>
+        <p>{actions.actionContent}</p>       
       </CardContent>
  
     </Card>
+      
    </Grid> 
-    )}
-    </Grid>
     
+    </Grid>
+    )}
     </>
   );
 }
+
+export default Actions;

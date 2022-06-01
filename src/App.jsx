@@ -47,7 +47,7 @@ const App = props => {
                 <Tarjeta items={lugares} />
               </Route>
               <Redirect from="/home" to="/"></Redirect>
-              <Route path='/action' exact component={Detalle_Accion}>
+              <Route path='/action/:idAction' exact component={Detalle_Accion}>
               </Route>
               <Route path='/detalle/:idPlace' exact component={Detalle} >
 
