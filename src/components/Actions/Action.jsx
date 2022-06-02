@@ -21,6 +21,7 @@ import { Grid } from '@mui/material';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import Loader from '../Loader/Loader';
 
 
 
@@ -34,6 +35,7 @@ const Actions = props => {
   const [actions, setActions] = useState([]);
   const actionsidPlace = params.idPlace;
   console.log(actionsidPlace)
+  const[loading, setLoading] = useState(true);
   
   const body = {
   "pageSize": 10,
@@ -52,7 +54,7 @@ const fetchApiActions = () =>{
     }
   }).then(response => response.json())
   .catch(error => console.log(error))
-  .then(response => setActions(response.data));
+  .then(response => {setActions(response.data); setLoading(false)});
 }
 
 
@@ -70,10 +72,16 @@ useEffect(() =>{
 
   return (
     <>
-    {
-      actions.map((actions) =>
+      {
+         loading?
+         <Loader/>
+         :
+   
      <Grid container spacing={2} marginTop={3} marginLeft={3} marging right="auto">
-       
+   
+     {    
+      
+      actions.map((actions) =>
       <Grid item xs={6} sm={4}>
     <Card  sx={{ width:270 }} style={{marginLeft: 20, marginRight: 50}}>
   
@@ -96,9 +104,12 @@ useEffect(() =>{
     </Card>
       
    </Grid> 
-    
+
+   )}
+     
     </Grid>
-    )}
+      }
+    
     </>
   );
 }

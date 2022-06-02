@@ -8,15 +8,15 @@ import Estrellas from "../../Estrellas";
 import { useParams } from 'react-router-dom';
 import '../../styles/Detalle.css';
 import { SecurityUpdateGoodSharp } from '@mui/icons-material';
+import Loader from '../../Loader/Loader';
 
 
 const Descripcion = props => {
 
   const params = useParams();
   const url = `https://soluciones.avansis.es:8061/api/Places/Details/`+params.idPlace
- 
-
-   const [details, setDetails] = useState([]);
+  const [details, setDetails] = useState([]);
+  
 
 
 const fetchApi = async () =>{
@@ -39,6 +39,7 @@ useEffect(() =>{
 
   return (
     <>
+   
     
       <Grid container spacing={2} justifyContent="center" marginLeft={20} marginTop={5}>
       

@@ -8,14 +8,16 @@ import Descripcion from './components/general/Detalles/Descripcion';
 import Detalle_Accion from './components/Actions/Detalle_Accion';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import Loader from './components/Loader/Loader';
 
 
 const App = props => {
   const [lugares, setLugares] = useState([]);
+  const[loading, setLoading] = useState(true);
   
   const url = "https://soluciones.avansis.es:8061/api/Places/List";
   const body = {
-    "pageSize": 10,
+    "pageSize": 12,
     "pageNumber": 0,
     "globalSearch": "",
     "search": [],
@@ -31,20 +33,36 @@ const App = props => {
       }
     }).then(response => response.json())
     .catch(error => console.log(error))
-    .then(response => setLugares(response.data));
+    
+    .then(response => {setLugares(response.data); setLoading(false)});
   }
   
   useEffect(() =>{
-    fetchApi()
-  }, [])
 
+    fetchApi()   
+    
+    
+  }, [])
+  console.log(loading)
+
+  
     return (
       <>
+       { 
+         loading?
+         <Loader/>
+         :
+         <div>
         <Router>
           <div>
+         
+          
             <Switch>
+           
               <Route path='/' exact>
+             
                 <Tarjeta items={lugares} />
+              
               </Route>
               <Redirect from="/home" to="/"></Redirect>
               <Route path='/action/:idAction' exact component={Detalle_Accion}>
@@ -54,9 +72,12 @@ const App = props => {
               </Route>
 
             </Switch>
+            
           </div>
         </Router>
-
+        </div>
+       
+       }
       </>
     )
 }
