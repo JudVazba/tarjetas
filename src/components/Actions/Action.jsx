@@ -21,6 +21,7 @@ import { Grid } from '@mui/material';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import Loader from '../Loader/Loader';
 
 
 
@@ -32,16 +33,28 @@ const Actions = props => {
   const urlActions = "https://soluciones.avansis.es:8061/api/Actions/List"
   const url ="https://soluciones.avansis.es:8061/api/Actions/Details"+params.idAction
   const [actions, setActions] = useState([]);
-  const actionsidPlace = params.idPlace;
-  console.log(actionsidPlace)
+  const [idPlace, setIdPlace] = useState(params.idPlace);
+  console.log(idPlace);
+ 
+  const[loading, setLoading] = useState(true);
   
   const body = {
-  "pageSize": 10,
-  "pageNumber": 0,
-  "globalSearch": "",
-  "search": [],
-  "order": []
+  pageSize: 100,
+  pageNumber: 0,
+  globalSearch: "",
+  search: [
+    {
+    searchField: "IdPlace",
+    searchValue: idPlace,
+    searchMode: "EqualTo"
+    }
+  ],
+  order: []
 }
+
+
+
+
 
 const fetchApiActions = () =>{
   fetch(urlActions, {
@@ -52,7 +65,13 @@ const fetchApiActions = () =>{
     }
   }).then(response => response.json())
   .catch(error => console.log(error))
-  .then(response => setActions(response.data));
+  .then(response => {
+    //setActions(response.data.filter(action => action.idPlace === 1)); 
+    setActions(response.data);
+    console.log("Actions:");
+    console.log(actions);
+    setLoading(false); });
+ 
 }
 
 
@@ -60,7 +79,11 @@ const fetchApiActions = () =>{
 useEffect(() =>{
 
   fetchApiActions()
+ 
+ 
 }, [])
+
+
 
 
 //  { JSON.stringify(actions, null, 2) }
@@ -70,35 +93,45 @@ useEffect(() =>{
 
   return (
     <>
-    {
-      actions.map((actions) =>
+      {
+         loading?
+         <Loader/>
+         :
+   
      <Grid container spacing={2} marginTop={3} marginLeft={3} marging right="auto">
-       
+   
+     {    
+      
+      actions.map((actionf) =>
+      
       <Grid item xs={6} sm={4}>
     <Card  sx={{ width:270 }} style={{marginLeft: 20, marginRight: 50}}>
   
       <ActionType/>
-     <Link to="/action">
+     <Link to={"/action/"+actionf.idAction}>
      <CardMedia
      component="img"
-      image={"data:image/png;base64,"+actions.actionImgFeatured}
+      image={"data:image/png;base64,"+actionf.actionImgFeatured}
       />     
       </Link> 
       <CardContent>     
         <Typography variant="body2" color="primary" >
-          {actions.actionTitle}
+          {actionf.actionTitle}
         </Typography>
         <hr></hr>        
-        <p><CalendarMonthIcon color="warning"/>{actions.actionDateTimeTo}</p>
-        <p>{actions.actionContent}</p>       
+        <p><CalendarMonthIcon color="warning"/>{actionf.actionDateTimeTo}</p>
+        <p>{actionf.actionContent}</p>       
       </CardContent>
  
     </Card>
       
    </Grid> 
-    
+
+   )}
+     
     </Grid>
-    )}
+      }
+    
     </>
   );
 }
