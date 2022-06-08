@@ -8,76 +8,35 @@ import Descripcion from './components/general/Detalles/Descripcion';
 import Detalle_Accion from './components/Actions/Detalle_Accion';
 import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import Loader from './components/Loader/Loader';
+
 
 
 const App = props => {
-  const [lugares, setLugares] = useState([]);
-  const[loading, setLoading] = useState(true);
-  
-  const url = "https://soluciones.avansis.es:8061/api/Places/List";
-  const body = {
-    "pageSize": 12,
-    "pageNumber": 0,
-    "globalSearch": "",
-    "search": [],
-    "order": []
-  }
 
-  const fetchApi = () =>{
-    fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type':'application/json'
-      }
-    }).then(response => response.json())
-    .catch(error => console.log(error))
-    
-    .then(response => {setLugares(response.data); setLoading(false)});
-  }
-  
-  useEffect(() =>{
 
-    fetchApi()   
-    
-    
-  }, [])
-  console.log(loading)
 
   
     return (
       <>
-       { 
-         loading?
-         <Loader/>
-         :
-         <div>
         <Router>
           <div>
          
           
             <Switch>
            
-              <Route path='/' exact>
-             
-                <Tarjeta items={lugares} />
               
-              </Route>
-              <Redirect from="/home" to="/"></Redirect>
-              <Route path='/action/:idAction' exact component={Detalle_Accion}>
-              </Route>
-              <Route path='/detalle/:idPlace' exact component={Detalle} >
+              
+              <Route path='/places/:page' exact component={Tarjeta}></Route>
+              <Route path='/action/:idAction' exact component={Detalle_Accion}></Route>
+              <Route path='/detalle/:idPlace' exact component={Detalle} ></Route>
+              <Redirect from="/" to="/places/1"></Redirect>
 
-              </Route>
+              
 
             </Switch>
             
           </div>
         </Router>
-        </div>
-       
-       }
       </>
     )
 }
