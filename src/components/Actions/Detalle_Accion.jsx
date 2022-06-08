@@ -10,14 +10,14 @@ function Detalle_Accion() {
     <>
       <Grid container spacing={2} justifyContent="center">
 
-        <Grid item xs={6} >
+        <Grid className="containerImg" item xs={10} sm={10} md={4} >
 
 
           <img src='https://st.depositphotos.com/1134101/3098/i/950/depositphotos_30987137-stock-photo-puerto-banus-at-dusk-marina.jpg' />
 
 
         </Grid>
-        <Grid item xs={12} sm={12} md={4} >
+        <Grid className='text' item xs={10} sm={10} md={4} >
 
           <h1 >TÍTULO ACCIÓN</h1>
 
@@ -44,10 +44,10 @@ function Detalle_Accion() {
           <Grid container
             border="1px solid lightgrey"
           >
-            <Grid item xs={12} marginTop={1}>
+            <Grid className="Desde" item xs={12} marginTop={1}>
               <Typography>Fecha desde:</Typography>
             </Grid>
-            <Grid item xs={12} marginTop={3}>
+            <Grid className="Hasta" item xs={12} marginTop={3}>
               <Typography>Fecha hasta:</Typography>
             </Grid>
           </Grid>
@@ -58,7 +58,7 @@ function Detalle_Accion() {
       <br />
 
       <Divider justifyContent="center" />
-      <Grid container
+      <Grid container className="form"
         direction="column-reverse"
         justifyContent="space-evenly"
         alignItems="center"

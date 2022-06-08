@@ -26,7 +26,7 @@ const Tarjeta = props => {
           props.items.map(item =>
             <Grid item xs={12} sm={6} lg={4}>
             
-              <Card className="card-body" sx={{ width:270 }} style={{marginLeft: 70, marginRight: 50}} >
+              <Card className="card-body" sx={{ width:270 }} style={{marginLeft: 70, marginRight: 50}}>
 
 
                 <Typography gutterBottom 
@@ -86,4 +86,3 @@ const Tarjeta = props => {
 }
 
 export default Tarjeta
-
