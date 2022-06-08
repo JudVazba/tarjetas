@@ -11,7 +11,7 @@ import '../styles/styles.css';
 
 var actionType = 2
 
-function ActionType() {
+function ActionType(props) {
 
   if(actionType ===1){
   return (
