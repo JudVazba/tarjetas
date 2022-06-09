@@ -107,7 +107,7 @@ useEffect(() =>{
       <Grid item xs={6} sm={4}>
     <Card  sx={{ width:270 }} style={{marginLeft: 20, marginRight: 50}}>
   
-      <ActionType/>
+      <ActionType items={actions}/>
      <Link to={"/action/"+actionf.idAction}>
      <CardMedia
      component="img"

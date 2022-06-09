@@ -6,23 +6,53 @@ import WorkIcon from '@mui/icons-material/Work';
 
 import '../styles/Actions.css';
 import '../styles/styles.css';
+import { ContentCutOutlined } from '@mui/icons-material';
+import {useState} from 'react';
+import { useEffect } from 'react';
 
 
 
-var actionType = 2
 
-function ActionType(props) {
 
-  if(actionType ===1){
+
+const ActionType =props => {
+
+const [actionTypeid, setidActionTypeid] = useState([]);
+console.log(props)
+
+const capturarActionType = () =>{
+   props.items.map(item =>
+ 
+  setidActionTypeid(item.idActionType)
+
+  )
+
+
+}
+
+useEffect(() => {
+  capturarActionType();
+  console.log("AT:")
+  console.log(actionTypeid)
+}, [props.idActionType])
+
+
+
+
+
+
+  if(actionTypeid ===1){
+   
   return (
 <>
+
 <div className='icono' id='evento'>
 <LocalActivityIcon color="primary"/>
 <p>Evento</p>
 </div>
 </>
   )
-}else if(actionType ===2){
+}else if(actionTypeid ===2){
   return (
     <>
     <div className='icono' id='descuento'>
@@ -31,7 +61,7 @@ function ActionType(props) {
     </div>
     </>
       )
-}else if(actionType ===3){
+}else if(actionTypeid ===3){
   return (
     <>
     <div className='icono' id='oferta'>
@@ -40,7 +70,7 @@ function ActionType(props) {
     </div>
     </>
       )
-}
+} 
 }
 
 export default ActionType
