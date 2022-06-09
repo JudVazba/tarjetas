@@ -4,8 +4,21 @@ form{
     margin-right: auto;
 }
 
+.css-m69qwo-MuiStack-root {
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
 .boton{
     margin-left: auto;
     margin-right: auto;
 }
 
+.text {
+    padding: 5%;
+    text-align: justify;
+}
+
+img {
+    margin-top: 15%;
+}

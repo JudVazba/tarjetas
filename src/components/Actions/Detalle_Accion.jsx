@@ -34,14 +34,14 @@ useEffect(() =>{
     <>
       <Grid container spacing={2} justifyContent="center">
 
-        <Grid item xs={6} >
+        <Grid className="containerImg" item xs={10} sm={10} md={4} >
 
 
           <img src={"data:image/png;base64,"+action.actionImgFeatured} />
 
 
         </Grid>
-        <Grid item xs={12} sm={12} md={4} >
+        <Grid className='text' item xs={10} sm={10} md={4} >
 
           <h1 >{action.actionTitle}</h1>
 
@@ -49,11 +49,14 @@ useEffect(() =>{
           <Grid container
             border="1px solid lightgrey"
           >
-            <Grid item xs={12} marginTop={1}>
-              <Typography>Fecha desde: {action.actionDateTime}</Typography>
+
+            <Grid className="Desde" item xs={12} marginTop={1}>
+              <Typography>Fecha desde:{action.actionDateTime}</Typography>
             </Grid>
-            <Grid item xs={12} marginTop={3}>
+            <Grid className="Hasta" item xs={12} marginTop={3}>
               <Typography>Fecha hasta: {action.actionDateTimeTo}</Typography>
+
+    
             </Grid>
           </Grid>
         </Grid>
@@ -63,7 +66,7 @@ useEffect(() =>{
       <br />
 
       <Divider justifyContent="center" />
-      <Grid container
+      <Grid container className="form"
         direction="column-reverse"
         justifyContent="space-evenly"
         alignItems="center"

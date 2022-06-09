@@ -31,4 +31,23 @@ img{
     overflow: hidden;
 }
 
+.containerImg {
+    width: 20%;
+}
+  
+  .containerImg img {
+    max-height: 100%;
+    max-width: 95%;
+    border-radius: 10%;
+  }
 
+.Desde {
+    padding-left: 10px;
+
+}
+
+.Hasta {
+    padding-left: 10px;
+    padding-bottom: 5px;
+
+}
