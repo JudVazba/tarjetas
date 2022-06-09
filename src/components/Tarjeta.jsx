@@ -80,11 +80,12 @@ const Tarjeta = () => {
     }
   };
 
+
   useEffect(() => {
     fetchApi();
   }, [params.page]);
 
-  /*  */
+ 
 
   return (
     <>
@@ -182,6 +183,8 @@ const Tarjeta = () => {
       )}
     </>
   );
-};
 
-export default Tarjeta;
+}
+
+export default Tarjeta
+

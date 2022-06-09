@@ -6,7 +6,7 @@ import '../../styles/styles.css';
 
 
 const Datos = props => { 
-  
+
   return (
     <>
       <Grid container >       
