@@ -6,7 +6,7 @@ import '../../styles/styles.css';
 
 
 const Datos = props => { 
-  console.log(props);
+
   return (
     <>
       <Grid container >       

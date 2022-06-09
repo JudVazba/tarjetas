@@ -13,17 +13,65 @@ import { IconButton, Fab, Grid } from '@mui/material'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './styles/styles.css';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Loader from '../components/Loader/Loader';
 
+const Tarjeta = () => { 
+  
+  const params = useParams();
+  const [lugares, setLugares] = useState([]);
+  const [pagination, setPagination] = useState({pages: 0, records: 0});
+  const[loading, setLoading] = useState(true);
+  
+  const url = "https://soluciones.avansis.es:8061/api/Places/List";
+  const body = {
+    "pageSize": 12,
+    "pageNumber": params.page-1,
+    "globalSearch": "",
+    "search": [
+      {
+        searchField: "IdPlaceGroup",
+        searchValue: 2,
+        searchMode: "EqualTo"
+        }
+    ],
+    "order": []
+  }
 
-const Tarjeta = props => { 
-  console.log(props);
+  const fetchApi = () =>{
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type':'application/json'
+      }
+    }).then(response => response.json())
+    .catch(error => console.log(error))
+    
+    .then(response => {setLugares(response.data); setPagination(response.pagination); setLoading(false)});
+  }
+  
+  useEffect(() =>{
+
+    fetchApi()   
+    
+    
+  }, [params.page])
+
    return (
     <>
+           { 
+         loading?
+         <Loader/>
+         :
+         <div>
+         <Link to={"/places/"+(params.page*1-1)}> <Button>ANTERIOR</Button></Link>
+         Mostrando registros del {(params.page*1-1)*12+1} a {(params.page*1-1)*12+12} de un total de {pagination.records}
+         <Link to={"/places/"+(params.page*1+1)}><Button>SIGUIENTE</Button></Link>
       <Grid container spacing={3} marginLeft="auto" marginRight="auto">
         {
-          props.items.map(item =>
+          lugares.map(item =>
             <Grid item xs={12} sm={6} lg={4}>
             
               <Card className="card-body" sx={{ width:270 }} style={{marginLeft: 70, marginRight: 50}}>
@@ -81,6 +129,8 @@ const Tarjeta = props => {
             </Grid>
           )}
       </Grid>
+      </div>
+           }
     </>
   );
 }

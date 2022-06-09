@@ -3,9 +3,33 @@ import Form from '../forms/Form';
 import { Divider, Grid, Typography } from '@mui/material';
 import '../styles/Detalle.css';
 import '../styles/styles.css';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 
-function Detalle_Accion() {
+const Detalle_Accion = props => {
+
+  const params = useParams();
+  const url = `https://soluciones.avansis.es:8061/api/Actions/Details/`+params.idAction
+ 
+
+   const [action, setAction] = useState([]);
+
+
+const fetchApi = async () =>{
+  const response = await fetch(url)
+  //console.log(response.status)
+  const responseJSON = await  response.json();
+  setAction(responseJSON.data)
+  console.log(responseJSON)
+}
+
+
+
+useEffect(() =>{
+  fetchApi()
+}, [])
   return (
     <>
       <Grid container spacing={2} justifyContent="center">
@@ -13,42 +37,26 @@ function Detalle_Accion() {
         <Grid className="containerImg" item xs={10} sm={10} md={4} >
 
 
-          <img src='https://st.depositphotos.com/1134101/3098/i/950/depositphotos_30987137-stock-photo-puerto-banus-at-dusk-marina.jpg' />
+          <img src={"data:image/png;base64,"+action.actionImgFeatured} />
 
 
         </Grid>
         <Grid className='text' item xs={10} sm={10} md={4} >
 
-          <h1 >TÍTULO ACCIÓN</h1>
+          <h1 >{action.actionTitle}</h1>
 
-          <p>Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit.
-            Cras condimentum, neque vel hendrerit molestie
-            , lectus felis commodo arcu, nec mollis mauris
-            felis accumsan velit. Cras vestibulum dui a
-            ornare rhoncus. Quisque a bibendum lectus,
-            vel auctor ipsum. Praesent ac sodales enim.
-            Morbi faucibus tempor lorem, et ultrice
-            s diam tempus id. In hendrerit metus neque
-            , et posuere lectus fringilla vitae.
-            Integer non lectus interdum ante pulvinar posuere.
-            Nunc vehicula dapibus arcu. Suspendisse vehicula,
-            est id auctor fringilla, metus risus fringilla lorem,
-            quis aliquet lacus nisl in odio. In turpis metus,
-            iaculis in justo sed, eleifend sollicitudin turpis.
-            Suspendisse cursus ante quis ornare finibus. Interdum
-            et malesuada fames ac ante ipsum primis in faucibus.
-            Maecenas efficitur, leo in condimentum dignissim,
-            ipsum neque posuere elit, eu pretium arcu massa
-            id est.</p>
+          <p>{action.actionContent} </p>
           <Grid container
             border="1px solid lightgrey"
           >
+
             <Grid className="Desde" item xs={12} marginTop={1}>
-              <Typography>Fecha desde:</Typography>
+              <Typography>Fecha desde:{action.actionDateTime}</Typography>
             </Grid>
             <Grid className="Hasta" item xs={12} marginTop={3}>
-              <Typography>Fecha hasta:</Typography>
+              <Typography>Fecha hasta: {action.actionDateTimeTo}</Typography>
+
+    
             </Grid>
           </Grid>
         </Grid>
