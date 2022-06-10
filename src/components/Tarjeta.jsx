@@ -46,14 +46,9 @@ const Tarjeta = () => {
     order: [],
   };
 
-  const limites = () =>{
-    if(params.page === 1){
-      params.page = 1;
-    }
 
     
-  }
-
+  
   const fetchApi = () => {
     fetch(url, {
       method: "POST",
@@ -72,17 +67,34 @@ const Tarjeta = () => {
       });
   };
   
-  const paginacion = (parametrosP) => {
-    if (params.page === 1) {
-      params.page = 1;
-      console.log("parrams");
-      console.log(params.page);
-    }
-  };
+  const ant = () =>{
+    
+ var prev;
+ if(params.page< 2 ){
+  prev = params.page * 1 ; 
+ }else{
+ prev = params.page * 1 - 1 ;
+ }
+ return prev; 
+  }
 
+  const sig = () =>{
+    
+    var next;
+    if(params.page * 12  > pagination.records ){
+     next = params.page * 1 ; 
+    }else{
+    next = params.page * 1 + 1;
+    }
+    return next; 
+     }
 
   useEffect(() => {
+
     fetchApi();
+  
+    console.log(params.page)
+    
   }, [params.page]);
 
  
@@ -98,7 +110,7 @@ const Tarjeta = () => {
           margin: "5%",
         }}
       >
-        <Link  to={"/places/" + ( params.page * 1 - 1)}>
+        <Link  to={"/places/" + ant()  }>
           <IconButton aria-label="Anterior"  >
             <ArrowBackIosNewIcon  />
           </IconButton>
@@ -112,7 +124,7 @@ const Tarjeta = () => {
           Mostrando registros del {(params.page * 1 - 1) * 12 + 1} a{" "}
           {(params.page * 1 - 1) * 12 + 12} de un total de {pagination.records}
         </Typography>
-        <Link to={"/places/" + (params.page * 1 + 1)}>
+        <Link to={"/places/" + sig()}>
           <IconButton aria-label="Siguiente">
             <ArrowForwardIosIcon />
           </IconButton>
