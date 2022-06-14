@@ -45,7 +45,7 @@ function Form() {
           multiline
           rows={4}
         />
-        <Stack direction="row">
+        <Stack direction="row"> 
       <Button variant="contained" endIcon={<SendIcon />} className="boton">
         Enviar
       </Button>

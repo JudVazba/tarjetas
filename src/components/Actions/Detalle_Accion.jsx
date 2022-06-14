@@ -6,7 +6,9 @@ import '../styles/styles.css';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useState } from 'react';
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Box } from '@mui/system';
+import { Link } from 'react-router-dom';
 
 const Detalle_Accion = props => {
 
@@ -15,6 +17,7 @@ const Detalle_Accion = props => {
  
 
    const [action, setAction] = useState([]);
+   var idPlace = sessionStorage.getItem("idPlace");
 
 
 const fetchApi = async () =>{
@@ -30,8 +33,17 @@ const fetchApi = async () =>{
 useEffect(() =>{
   fetchApi()
 }, [])
+
   return (
     <>
+    
+<Box>
+    <Link to ={"/detalle/" +idPlace}>
+    <ArrowBackIcon/>Volver
+    </Link>
+   
+    </Box> 
+
       <Grid container spacing={2} justifyContent="center">
 
         <Grid className="containerImg" item xs={10} sm={10} md={4} >
