@@ -14,7 +14,9 @@ import { palette } from '@mui/system';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import '../styles/Actions.css';
-import ActionType from './ActionType';
+import ActionEvent from './ActionEvent';
+import ActionJob from './ActionJob';
+import ActionOffer from './ActionOffer';
 import '../styles/styles.css';
 import { Link } from 'react-router-dom';
 import { Grid } from '@mui/material';
@@ -22,6 +24,8 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import Loader from '../Loader/Loader';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Box } from '@mui/system';
 
 
 
@@ -35,6 +39,7 @@ const Actions = props => {
   const [actions, setActions] = useState([]);
   const [idPlace, setIdPlace] = useState(params.idPlace);
   console.log(idPlace);
+  sessionStorage.setItem("idPlace", idPlace);
  
   const[loading, setLoading] = useState(true);
   
@@ -93,12 +98,20 @@ useEffect(() =>{
 
   return (
     <>
+    <Box>
+    <Link to ="/">
+    <ArrowBackIcon/>Volver
+    </Link>
+   
+    </Box>
+    
       {
          loading?
          <Loader/>
          :
    
      <Grid container spacing={2} marginTop={3} marginLeft={3} marging right="auto">
+     
    
      {    
       
@@ -106,8 +119,15 @@ useEffect(() =>{
       
       <Grid item xs={6} sm={4}>
     <Card  sx={{ width:270 }} style={{marginLeft: 20, marginRight: 50}}>
+  { actionf.idActionType === 1 ?
+
+    <ActionEvent/>
+    : actionf.idActionType === 2 ?
+    <ActionOffer/> 
+    :
+    <ActionJob/>
   
-      <ActionType items={actions}/>
+  }
      <Link to={"/action/"+actionf.idAction}>
      <CardMedia
      component="img"
@@ -122,7 +142,7 @@ useEffect(() =>{
         <p><CalendarMonthIcon color="warning"/>{actionf.actionDateTimeTo}</p>
         <p>{actionf.actionContent}</p>       
       </CardContent>
- 
+  
     </Card>
       
    </Grid> 
