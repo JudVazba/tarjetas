@@ -9,6 +9,8 @@ import { useParams } from 'react-router-dom';
 import '../../styles/Detalle.css';
 import { SecurityUpdateGoodSharp } from '@mui/icons-material';
 import Loader from '../../Loader/Loader';
+import { Link} from 'react-router-dom';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
 const Descripcion = props => {
@@ -16,6 +18,7 @@ const Descripcion = props => {
   const params = useParams();
   const url = `https://soluciones.avansis.es:8061/api/Places/Details/`+params.idPlace
   const [details, setDetails] = useState([]);
+  const[loading, setLoading] = useState(true);
   
 
 
@@ -24,6 +27,7 @@ const fetchApi = async () =>{
   //console.log(response.status)
   const responseJSON = await  response.json();
   setDetails(responseJSON.data)
+  setLoading(false); 
   console.log(responseJSON)
 }
 
@@ -39,7 +43,17 @@ useEffect(() =>{
 
   return (
     <>
+
+<Box>
+    <Link to ="/">
+    <ArrowBackIcon/>Volver
+    </Link>
    
+    </Box>
+    {
+         loading?
+         <Loader/>
+         :
     
       <Grid container spacing={2} justifyContent="center" marginLeft={20} marginTop={5}>
       
@@ -73,7 +87,7 @@ useEffect(() =>{
       </Box>
      
       </Grid>
-   
+    }
     </>
   )
 }

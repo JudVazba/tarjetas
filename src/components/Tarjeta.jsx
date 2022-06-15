@@ -31,6 +31,7 @@ const Tarjeta = () => {
   const [pagination, setPagination] = useState({ pages: 0, records: 0 });
   const [loading, setLoading] = useState(true);
 
+
   const url = "https://soluciones.avansis.es:8061/api/Places/List";
   const body = {
     pageSize: 12,
@@ -168,7 +169,9 @@ const Tarjeta = () => {
                       position="absolute"
                       style={{ bottom: 200, left: 230 }}
                     >
+                   
                       <FavoriteIcon />
+                     
                     </IconButton>
                   </Link>
 
